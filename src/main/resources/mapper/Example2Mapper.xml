@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.example.sqlprocedureandfunction.mapper.Example2Mapper">
+
+    <resultMap id="detail" type="org.example.sqlprocedureandfunction.entity.CustomerOrderDetail">
+        <result property="name" javaType="String" jdbcType="VARCHAR" column="name"/>
+        <result property="orderCount" javaType="int" jdbcType="INTEGER" column="orderCount"/>
+        <result property="totalSpent" javaType="Decimal" jdbcType="DECIMAL" column="totalSpent"/>
+    </resultMap>
+
+    <select id="getTotalRevenue" resultType="decimal">
+        SELECT GetTotalRevenue()
+    </select>
+
+    <select id="getCustomerOrderDetail" statementType="CALLABLE">
+        {CALL GetCustomerOrderDetails(
+            #{customerId, mode=IN},
+            #{name, mode=OUT, jdbcType=VARCHAR},
+            #{orderCount, mode=OUT, jdbcType=INTEGER},
+            #{totalSpent,mode=OUT, jdbcType=DECIMAL}
+        )}
+    </select>
+
+</mapper>
