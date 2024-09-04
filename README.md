@@ -1,5 +1,10 @@
 # MySQL里的函数和存储过程
 
+
+这是个demo项目，通过mybatis操作MySQL的函数和存储过程。
+
+## 背景问题
+
 在数据库里已经定义好的存储过程(procedure)或者函数(function)：
 
 `int output = f(int input);`
@@ -13,7 +18,7 @@ select * from table_b where id in (select f(id) from table_a)
 
 - 如果f是`存储过程`：由于存储过程只能通过call调用，且不一定有返回值，所以不能像函数一样直接使用。
 
-## 问题
+## 建议
 
 一般情况下，
 - 函数被用于做数据转换并且一定有返回值；
