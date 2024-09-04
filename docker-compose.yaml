@@ -1,0 +1,12 @@
+# https://hub.docker.com/_/mysql
+# Use root/123456 as user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    # (this is just an example, not intended to be a production configuration)
